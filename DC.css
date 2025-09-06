@@ -1,0 +1,197 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* stack secara vertikal */
+  justify-content: center; /* tengah secara vertikal */
+  align-items: center; /* tengah secara horizontal */
+
+  background-image: url("bgDC.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+}
+
+h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bg-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(42, 92, 162, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  margin: auto;
+
+  /* Gradasi transparan agar menyatu dengan background */
+  background: linear-gradient(
+    to bottom right,
+    rgba(42, 92, 162, 0.6),
+    rgba(0, 0, 0, 0.7)
+  );
+
+  /* Efek semi-kaca */
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.spinner-container {
+  margin: 30px auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  /* Tambahkan gradasi + transparansi */
+  background: linear-gradient(
+    to bottom right,
+    rgba(42, 92, 162, 0.4),
+    rgba(0, 0, 0, 0.4)
+  );
+
+  /* Tambahan efek blur jika browser mendukung */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  /* Tambahkan bayangan halus */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.spinner-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(rgba(255, 255, 255, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.spinner img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-family: "Press Start 2P", cursive;
+  background-color: #ff6600;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #e65c00;
+}
+
+.result {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-family: "Courier New", monospace; /* atau font lain */
+  font-size: 26px;
+  font-weight: 600;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  min-height: 40px;
+  user-select: none;
+}
+
+.watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #000000;
+  user-select: none;
+  pointer-events: none; /* biar watermark nggak ganggu klik */
+  z-index: 9999;
+}
+
+@media (max-width: 600px) {
+  body {
+    background-image: url("bgb.jpeg"); /* gambar khusus HP */
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .spinner-container {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .spinner-container {
+    width: 60vw; /* lebar = 60% layar */
+    height: 60vw; /* tinggi sama seperti lebar */
+    max-width: 250px; /* batasi max di HP */
+    max-height: 250px;
+    margin: 20px auto;
+  }
+
+  button {
+    font-size: 10px;
+    padding: 8px 16px;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  .result {
+    font-size: 20px;
+  }
+}
